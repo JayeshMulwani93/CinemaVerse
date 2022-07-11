@@ -17,6 +17,7 @@ const SearchBox = () => {
       <input
         className="form-control"
         onChange={updateSearchHandler}
+        placeholder="Star Wars"
       />
     </div>
   );
