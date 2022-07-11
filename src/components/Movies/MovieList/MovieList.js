@@ -4,37 +4,28 @@ import {
   removeFromWatchListApi,
 } from "../../../api/FirebaseApi";
 import UserContext from "../../../store/user-context";
-import AddToWatchList from "../../Favorites/AddToWatchList";
-import RemoveFromWatchList from "../../Favorites/RemoveFromWatchList";
+import MovieFooter from "../MovieFooter/MovieFooter";
 
 const MovieList = (props) => {
   const movies = props.movies;
   const isWatchList = props.isWatchListList;
   const context = useContext(UserContext);
 
-  const isMoviePartOfWatchList = (movieId, movies) => {
-    if (movies) {
-      if (
-        movies.filter((currentMovie) => currentMovie.imdbID === movieId)
-          .length === 0
-      ) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const handleFavouritesClick = async (movie, isWatchList) => {
+  const handleFavouritesClick = async (
+    movie,
+    isWatchList,
+    doesWatchListContainMovie
+  ) => {
     const requestData = {
       userId: context.userId,
       movie: movie,
       watchList: props.watchList,
     };
     let moviesResponse;
-    if (isWatchList === "false") {
-      moviesResponse = await addToWatchListApi(requestData);
-    } else {
+    if (isWatchList === true || doesWatchListContainMovie === true) {
       moviesResponse = await removeFromWatchListApi(requestData);
+    } else {
+      moviesResponse = await addToWatchListApi(requestData);
     }
     props.updateWatchList(moviesResponse);
   };
@@ -47,29 +38,46 @@ const MovieList = (props) => {
     );
   }
 
-  return (
-    <React.Fragment>
-      {movies.length > 0 &&
-        movies.map((movie) => (
-          <div
-            className="image-container d-flex justify-content-start m-3"
-            key={movie.imdbID}
-          >
-            <img src={movie.Poster} alt="movie" />
-            <div
-              onClick={handleFavouritesClick.bind(null, movie, isWatchList)}
-              className="overlay d-flex align-items-center justify-content-center"
-            >
-              {isWatchList === "false" &&
-                !isMoviePartOfWatchList(movie.imdbID, props.watchList) && (
-                  <AddToWatchList />
-                )}
-              {isWatchList === "true" && <RemoveFromWatchList />}
-            </div>
-          </div>
-        ))}
-    </React.Fragment>
-  );
+  const moviesJSX = movies.map((movie) => {
+    const doesWatchListContainMovie = isMoviePartOfWatchList(
+      movie.imdbID,
+      props.watchList
+    );
+
+    return (
+      <div
+        className="image-container d-flex justify-content-start m-3"
+        key={movie.imdbID}
+      >
+        <img src={movie.Poster} alt="movie" />
+        <MovieFooter
+          movie={movie}
+          watchList={props.watchList}
+          isWatchList={isWatchList}
+          isMoviePartOfWatchList={doesWatchListContainMovie}
+          handleFavouritesClick={handleFavouritesClick.bind(
+            null,
+            movie,
+            isWatchList,
+            doesWatchListContainMovie
+          )}
+        />
+      </div>
+    );
+  });
+  return <React.Fragment>{moviesJSX}</React.Fragment>;
+};
+
+const isMoviePartOfWatchList = (movieId, movies) => {
+  if (movies) {
+    if (
+      movies.filter((currentMovie) => currentMovie.imdbID === movieId)
+        .length === 0
+    ) {
+      return false;
+    }
+  }
+  return true;
 };
 
 export default MovieList;

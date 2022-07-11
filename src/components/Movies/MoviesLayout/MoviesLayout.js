@@ -55,7 +55,7 @@ const MoviesLayout = (props) => {
         {status === "pending" && <h2>Loading Movies!</h2>}
         {status !== "pending" && (
           <MovieList
-            isWatchListList="false"
+            isWatchListList={false}
             movies={movies}
             watchList={props.watchList}
             updateWatchList={props.updateWatchList}

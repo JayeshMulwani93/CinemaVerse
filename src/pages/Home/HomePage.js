@@ -7,7 +7,7 @@ import UserContext from "../../store/user-context";
 import ListHeader from "../../components/Movies/ListHeader/ListHeader";
 import useHttp from "../../hooks/use-http";
 import { getUserWatchListApi } from "../../api/FirebaseApi";
-import WatchListLayout from "../../components/Favorites/WatchListLayout";
+import WatchListLayout from "../../components/WatchList/WatchListLayout";
 
 const HomePage = (props) => {
   const context = useContext(UserContext);
