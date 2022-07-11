@@ -5,14 +5,17 @@ const SearchBox = () => {
   const context = useContext(SearchContext);
 
   const updateSearchHandler = (event) => {
-    context.setSearchKey(event.target.value);
+    let searchKey = event.target.value;
+    if (!searchKey || searchKey === null || searchKey.length === 0) {
+      searchKey = "Star Wars";
+    }
+    context.setSearchKey(searchKey);
   };
 
   return (
     <div className="col col-sm-4">
       <input
         className="form-control"
-        value={context.searchKey}
         onChange={updateSearchHandler}
       />
     </div>

@@ -21,10 +21,7 @@ const MoviesLayout = (props) => {
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      let searchKey = "Star Wars";
-      if (searchMovie) {
-        searchKey = searchMovie;
-      }
+      let searchKey = searchMovie;
       sendRequest(searchKey);
     }, [500]);
 
