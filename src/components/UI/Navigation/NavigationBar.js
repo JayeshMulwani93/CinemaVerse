@@ -12,7 +12,7 @@ const NavigationBar = () => {
   return (
     <section>
       <header className={styles.header}>
-        <h2 className={styles.logo}>CinemaVerse</h2>
+        <h2 className={styles.logo}>Cinema-Verse</h2>
 
         <div className={styles.nav}>
           {isUserSignedIn === false && <SignIn />}
