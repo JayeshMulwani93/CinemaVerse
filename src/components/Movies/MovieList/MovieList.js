@@ -10,6 +10,7 @@ const MovieList = (props) => {
   const movies = props.movies;
   const isWatchList = props.isWatchListList;
   const context = useContext(UserContext);
+  console.log("Is signed in from movieList", context.isUserSignedIn);
 
   const handleFavouritesClick = async (
     movie,
@@ -50,18 +51,20 @@ const MovieList = (props) => {
         key={movie.imdbID}
       >
         <img src={movie.Poster} alt="movie" />
-        <MovieFooter
-          movie={movie}
-          watchList={props.watchList}
-          isWatchList={isWatchList}
-          isMoviePartOfWatchList={doesWatchListContainMovie}
-          handleFavouritesClick={handleFavouritesClick.bind(
-            null,
-            movie,
-            isWatchList,
-            doesWatchListContainMovie
-          )}
-        />
+        {context.isUserSignedIn === true && (
+          <MovieFooter
+            movie={movie}
+            watchList={props.watchList}
+            isWatchList={isWatchList}
+            isMoviePartOfWatchList={doesWatchListContainMovie}
+            handleFavouritesClick={handleFavouritesClick.bind(
+              null,
+              movie,
+              isWatchList,
+              doesWatchListContainMovie
+            )}
+          />
+        )}
       </div>
     );
   });
