@@ -1,4 +1,4 @@
-const firebaseDomain = process.env.REACT_APP_FIREBASE_DOMAIN;
+const firebaseDomain = process.env.REACT_APP_FIREBASE_DATABASE_URL + "/user-watchlist.json";
 
 export async function addToWatchListApi(requestData) {
   const userId = requestData.userId;

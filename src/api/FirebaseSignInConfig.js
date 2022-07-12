@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBSJlyqcfImaFLsSCwJ_jz447BlfxtsbLk",
-  authDomain: "cinema-verse.firebaseapp.com",
-  databaseURL: "https://cinema-verse-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "cinema-verse",
-  storageBucket: "cinema-verse.appspot.com",
-  messagingSenderId: "621161934386",
-  appId: "1:621161934386:web:4c52b25cfc228799ad162b"
+  apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_FIREBASE_AUTH_DOMAIN}`,
+  databaseURL: `${process.env.REACT_APP_FIREBASE_DATABASE_URL}`,
+  projectId: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_FIREBASE_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_FIREBASE_APP_ID}`,
 };
 
 const app = initializeApp(firebaseConfig);
