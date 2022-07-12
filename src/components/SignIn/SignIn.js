@@ -18,7 +18,7 @@ const SignIn = () => {
   };
   return (
     <div>
-      <Button onClick={signInHandler}>SignIn With Google</Button>
+      <Button onClick={signInHandler}>Sign-In With Google</Button>
     </div>
   );
 };

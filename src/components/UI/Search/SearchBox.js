@@ -1,3 +1,4 @@
+import React from "react";
 import { DEFAULT_SEARCH_KEY } from "../../../AppConstants";
 
 const SearchBox = (props) => {
