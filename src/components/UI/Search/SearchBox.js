@@ -1,15 +1,12 @@
-import { useContext } from "react";
-import SearchContext from "../../../store/movies-context";
+import { DEFAULT_SEARCH_KEY } from "../../../AppConstants";
 
-const SearchBox = () => {
-  const context = useContext(SearchContext);
-
+const SearchBox = (props) => {
   const updateSearchHandler = (event) => {
     let searchKey = event.target.value;
     if (!searchKey || searchKey === null || searchKey.length === 0) {
-      searchKey = "Star Wars";
+      searchKey = DEFAULT_SEARCH_KEY;
     }
-    context.setSearchKey(searchKey);
+    props.updateSearchKey(searchKey);
   };
 
   return (
@@ -17,7 +14,7 @@ const SearchBox = () => {
       <input
         className="form-control"
         onChange={updateSearchHandler}
-        placeholder="Star Wars"
+        placeholder={DEFAULT_SEARCH_KEY}
       />
     </div>
   );

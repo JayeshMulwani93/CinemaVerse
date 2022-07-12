@@ -1,16 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import SearchContext from "../../../store/movies-context";
-import ListHeader from "../ListHeader/ListHeader";
+import React, { useEffect, useState } from "react";
 import MovieList from "../MovieList/MovieList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MoviesLayout.css";
-import SearchBox from "../../UI/Search/SearchBox";
 import { getMovies } from "../../../api/OmdbApi";
 import useHttp from "../../../hooks/use-http";
+import LoadingSpinner from "../../UI/LoadingSpinner/LodingSpinner";
 
 const MoviesLayout = (props) => {
-  const context = useContext(SearchContext);
-  const searchMovie = context.searchKey;
+  const searchMovie = props.searchKey;
   const [movies, setMovies] = useState([]);
   const {
     sendRequest,
@@ -46,16 +43,11 @@ const MoviesLayout = (props) => {
 
   return (
     <React.Fragment>
-      <div className="row d-flex align-items-center mt-4 mb-4">
-        <ListHeader title="Movies" />
-        <SearchBox />
-      </div>
-
       <div className="row">
-        {status === "pending" && <h2>Loading Movies!</h2>}
+        {status === "pending" && <LoadingSpinner />}
         {status !== "pending" && (
           <MovieList
-            isWatchListList={false}
+            isWatchList={false}
             movies={movies}
             watchList={props.watchList}
             updateWatchList={props.updateWatchList}

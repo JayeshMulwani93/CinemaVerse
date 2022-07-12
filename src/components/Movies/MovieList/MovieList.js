@@ -8,9 +8,8 @@ import MovieFooter from "../MovieFooter/MovieFooter";
 
 const MovieList = (props) => {
   const movies = props.movies;
-  const isWatchList = props.isWatchListList;
+  const isWatchList = props.isWatchList;
   const context = useContext(UserContext);
-  console.log("Is signed in from movieList", context.isUserSignedIn);
 
   const handleFavouritesClick = async (
     movie,

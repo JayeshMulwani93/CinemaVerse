@@ -1,6 +1,5 @@
 body {
-  background: #141414;
-  color: #ffffff;
+  color: black;
 }
 
 .movie-app > .row {
@@ -25,6 +24,7 @@ body {
 .overlay {
   position: absolute;
   background: rgba(0, 0, 0, 0.8);
+  color: #ffff;
   width: 100%;
   transition: 0.5s ease;
   opacity: 0;

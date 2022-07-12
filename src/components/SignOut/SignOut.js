@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import UserContext from "../../store/user-context";
+import Button from "../UI/Button/Button";
 
-const Logout = () => {
+const SignOut = () => {
   const context = useContext(UserContext);
 
-  const logoutHandler = () => {
+  const signoutHandler = () => {
     context.updateUserId("");
   };
   return (
     <div>
-      <button onClick={logoutHandler}>Logout!</button>
+      <Button onClick={signoutHandler}>Sign Out</Button>
     </div>
   );
 };
 
-export default Logout;
+export default SignOut;

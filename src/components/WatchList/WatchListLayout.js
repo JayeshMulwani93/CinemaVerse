@@ -8,7 +8,7 @@ const WatchListLayout = (props) => {
     <React.Fragment>
       <div className="row">
         <MovieList
-          isWatchListList={true}
+          isWatchList={true}
           movies={watchList}
           watchList={watchList}
           updateWatchList={props.setWatchList}
