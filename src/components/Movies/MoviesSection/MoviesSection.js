@@ -5,16 +5,15 @@ import "./MoviesLayout.css";
 import { getMovies } from "../../../api/OmdbApi";
 import useHttp from "../../../hooks/use-http";
 import LoadingSpinner from "../../UI/LoadingSpinner/LodingSpinner";
+import Error from "../../Error/Error";
 
-const MoviesLayout = (props) => {
+const MoviesSection = (props) => {
   const searchMovie = props.searchKey;
   const [movies, setMovies] = useState([]);
-  const {
-    sendRequest,
-    status,
-    data,
-    error: moviesHasError,
-  } = useHttp(getMovies, true);
+  const { sendRequest, status, data, error: moviesHasError } = useHttp(
+    getMovies,
+    true
+  );
 
   useEffect(() => {
     const identifier = setTimeout(() => {
@@ -33,12 +32,8 @@ const MoviesLayout = (props) => {
     }
   }, [status, data]);
 
-  if (moviesHasError === true) {
-    return (
-      <div>
-        <h2>Error occurred while fetching movies!</h2>
-      </div>
-    );
+  if (moviesHasError) {
+    return <Error />;
   }
 
   return (
@@ -46,16 +41,11 @@ const MoviesLayout = (props) => {
       <div className="row">
         {status === "pending" && <LoadingSpinner />}
         {status !== "pending" && (
-          <MovieList
-            isWatchList={false}
-            movies={movies}
-            watchList={props.watchList}
-            updateWatchList={props.updateWatchList}
-          />
+          <MovieList isWatchList={false} movies={movies} />
         )}
       </div>
     </React.Fragment>
   );
 };
 
-export default MoviesLayout;
+export default MoviesSection;

@@ -1,12 +1,12 @@
 import React from "react";
-import AddToWatchList from "../../WatchList/AddToWatchList";
-import RemoveFromWatchList from "../../WatchList/RemoveFromWatchList";
+import AddToWatchList from "../AddToWatchList/AddToWatchList";
+import RemoveFromWatchList from "../RemoveFromWatchList/RemoveFromWatchList";
 
 const MovieFooter = (props) => {
   let footerComponentJSX;
 
   if (props.isWatchList === true || props.isMoviePartOfWatchList === true) {
-    footerComponentJSX = <RemoveFromWatchList />;
+    footerComponentJSX = <RemoveFromWatchList/>;
   } else {
     footerComponentJSX = <AddToWatchList />;
   }

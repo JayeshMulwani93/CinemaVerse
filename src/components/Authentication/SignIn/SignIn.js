@@ -1,9 +1,9 @@
 import React from "react";
-import { authentication } from "../../api/FirebaseSignInConfig";
+import { authentication } from "../../../api/FirebaseSignInConfig";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import Button from "../UI/Button/Button";
+import Button from "../../UI/Button/Button";
 import { useDispatch } from "react-redux";
-import { authSliceActions } from "../../store/user-slice";
+import { signInActionThunk } from "../../../store/auth/user-actions";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -13,11 +13,7 @@ const SignIn = () => {
 
     signInWithPopup(authentication, googleProvider)
       .then((result) => {
-        dispatch(
-          authSliceActions.signIn({
-            userId: result.user.email,
-          })
-        );
+        dispatch(signInActionThunk(result.user.email));
       })
       .catch((error) => {});
   };

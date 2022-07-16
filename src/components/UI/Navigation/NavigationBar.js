@@ -1,8 +1,9 @@
 import React from "react";
-import SignIn from "../../SignIn/SignIn";
-import Signout from "../../SignOut/SignOut";
+
 import styles from "./Navigation.module.css";
 import { useSelector } from "react-redux";
+import SignIn from "../../Authentication/SignIn/SignIn";
+import SignOut from "../../Authentication/SignOut/SignOut";
 
 const NavigationBar = () => {
   const authStore = useSelector((state) => state.authStore);
@@ -15,7 +16,7 @@ const NavigationBar = () => {
 
         <div className={styles.nav}>
           {isUserSignedIn === false && <SignIn />}
-          {isUserSignedIn === true && <Signout />}
+          {isUserSignedIn === true && <SignOut />}
         </div>
       </header>
     </section>

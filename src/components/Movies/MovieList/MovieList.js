@@ -4,9 +4,12 @@ import {
   removeFromWatchListApi,
 } from "../../../api/FirebaseApi";
 import MovieFooter from "../MovieFooter/MovieFooter";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { watchListActions } from "../../../store/watchlist/watchlist-slice";
 
 const MovieList = (props) => {
+  const dispatch = useDispatch();
+  const watchList = useSelector((store) => store.watchListStore.movies);
   const authStore = useSelector((state) => state.authStore);
   const movies = props.movies;
   const isWatchList = props.isWatchList;
@@ -19,7 +22,7 @@ const MovieList = (props) => {
     const requestData = {
       userId: authStore.userId,
       movie: movie,
-      watchList: props.watchList,
+      watchList: watchList,
     };
     let moviesResponse;
     if (isWatchList === true || doesWatchListContainMovie === true) {
@@ -27,7 +30,12 @@ const MovieList = (props) => {
     } else {
       moviesResponse = await addToWatchListApi(requestData);
     }
-    props.updateWatchList(moviesResponse);
+
+    dispatch(
+      watchListActions.updateWatchList({
+        movies: moviesResponse,
+      })
+    );
   };
 
   if (movies === undefined || movies === null || movies.length === 0) {
@@ -41,7 +49,7 @@ const MovieList = (props) => {
   const moviesJSX = movies.map((movie) => {
     const doesWatchListContainMovie = isMoviePartOfWatchList(
       movie.imdbID,
-      props.watchList
+      watchList
     );
 
     return (
