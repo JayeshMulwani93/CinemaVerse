@@ -22,15 +22,14 @@ const WatchListSection = () => {
     } else {
       if (watchListStore.status === "error") {
         return <Error />;
-      }
-      else if (watchListStore.movies && watchListStore.movies.length > 0) {
+      } else if (watchListStore.movies && watchListStore.movies.length > 0) {
         return (
           <React.Fragment>
             <div className="row d-flex align-items-center mt-4 mb-4">
               <ListHeader title="My List" />
             </div>
             <div className="row">
-              <MovieList isWatchList={true} movies={watchListStore.movies} />
+              <MovieList movies={watchListStore.movies} />
             </div>
           </React.Fragment>
         );

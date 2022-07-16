@@ -12,20 +12,15 @@ const MovieList = (props) => {
   const watchList = useSelector((store) => store.watchListStore.movies);
   const authStore = useSelector((state) => state.authStore);
   const movies = props.movies;
-  const isWatchList = props.isWatchList;
 
-  const handleFavouritesClick = async (
-    movie,
-    isWatchList,
-    doesWatchListContainMovie
-  ) => {
+  const handleFavouritesClick = async (movie, doesWatchListContainMovie) => {
     const requestData = {
       userId: authStore.userId,
       movie: movie,
       watchList: watchList,
     };
     let moviesResponse;
-    if (isWatchList === true || doesWatchListContainMovie === true) {
+    if (doesWatchListContainMovie) {
       moviesResponse = await removeFromWatchListApi(requestData);
     } else {
       moviesResponse = await addToWatchListApi(requestData);
@@ -58,16 +53,14 @@ const MovieList = (props) => {
         key={movie.imdbID}
       >
         <img src={movie.Poster} alt="movie" />
-        {authStore.isUserSignedIn === true && (
+        {authStore.isUserSignedIn && (
           <MovieFooter
             movie={movie}
             watchList={props.watchList}
-            isWatchList={isWatchList}
             isMoviePartOfWatchList={doesWatchListContainMovie}
             handleFavouritesClick={handleFavouritesClick.bind(
               null,
               movie,
-              isWatchList,
               doesWatchListContainMovie
             )}
           />

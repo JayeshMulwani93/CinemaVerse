@@ -15,8 +15,8 @@ const NavigationBar = () => {
         <h2 className={styles.logo}>CinemaVerse</h2>
 
         <div className={styles.nav}>
-          {isUserSignedIn === false && <SignIn />}
-          {isUserSignedIn === true && <SignOut />}
+          {!isUserSignedIn && <SignIn />}
+          {isUserSignedIn && <SignOut />}
         </div>
       </header>
     </section>

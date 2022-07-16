@@ -40,9 +40,7 @@ const MoviesSection = (props) => {
     <React.Fragment>
       <div className="row">
         {status === "pending" && <LoadingSpinner />}
-        {status !== "pending" && (
-          <MovieList isWatchList={false} movies={movies} />
-        )}
+        {status !== "pending" && <MovieList movies={movies} />}
       </div>
     </React.Fragment>
   );
