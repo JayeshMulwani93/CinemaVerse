@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   addToWatchListApi,
   removeFromWatchListApi,
 } from "../../../api/FirebaseApi";
-import UserContext from "../../../store/user-context";
 import MovieFooter from "../MovieFooter/MovieFooter";
+import { useSelector } from "react-redux";
 
 const MovieList = (props) => {
+  const authStore = useSelector((state) => state.authStore);
   const movies = props.movies;
   const isWatchList = props.isWatchList;
-  const context = useContext(UserContext);
 
   const handleFavouritesClick = async (
     movie,
@@ -17,7 +17,7 @@ const MovieList = (props) => {
     doesWatchListContainMovie
   ) => {
     const requestData = {
-      userId: context.userId,
+      userId: authStore.userId,
       movie: movie,
       watchList: props.watchList,
     };
@@ -50,7 +50,7 @@ const MovieList = (props) => {
         key={movie.imdbID}
       >
         <img src={movie.Poster} alt="movie" />
-        {context.isUserSignedIn === true && (
+        {authStore.isUserSignedIn === true && (
           <MovieFooter
             movie={movie}
             watchList={props.watchList}

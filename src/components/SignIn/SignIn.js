@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import { authentication } from "../../api/FirebaseSignInConfig";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import UserContext from "../../store/user-context";
 import Button from "../UI/Button/Button";
+import { useDispatch } from "react-redux";
+import { authSliceActions } from "../../store/user-slice";
 
 const SignIn = () => {
-  const context = useContext(UserContext);
+  const dispatch = useDispatch();
 
   const signInHandler = () => {
     const googleProvider = new GoogleAuthProvider();
 
     signInWithPopup(authentication, googleProvider)
       .then((result) => {
-        context.updateUserId(result.user.email);
+        dispatch(
+          authSliceActions.signIn({
+            userId: result.user.email,
+          })
+        );
       })
       .catch((error) => {});
   };

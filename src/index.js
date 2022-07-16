@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { UserContextProvider } from "./store/user-context";
-import './index.css';
+import { Provider } from "react-redux";
+import "./index.css";
+
+import cinemaVerseStore from "./store/index";
 
 ReactDOM.render(
-  <UserContextProvider>
-      <App />
-  </UserContextProvider>,
+  <Provider store={cinemaVerseStore}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );

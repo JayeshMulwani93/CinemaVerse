@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MoviesLayout from "../../components/Movies/MoviesLayout/MoviesLayout";
-
+import {useSelector} from "react-redux";
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import UserContext from "../../store/user-context";
 import ListHeader from "../../components/Movies/ListHeader/ListHeader";
 import useHttp from "../../hooks/use-http";
 import { getUserWatchListApi } from "../../api/FirebaseApi";
@@ -13,9 +12,10 @@ import SearchBox from "../../components/UI/Search/SearchBox";
 import { DEFAULT_SEARCH_KEY } from "../../AppConstants";
 
 const HomePage = (props) => {
-  const context = useContext(UserContext);
+  const authStore = useSelector((state) => state.authStore);
+  const isUserSignedIn = authStore.isUserSignedIn;
+  const userId = authStore.userId;
 
-  const userId = context.userId;
   const [watchList, setWatchList] = useState([]);
   const [searchKey, setSearchKey] = useState(DEFAULT_SEARCH_KEY);
 
@@ -83,13 +83,11 @@ const HomePage = (props) => {
       {moviesJSX}
       {status === "pending" && <LoadingSpinner />}
 
-      {context.isUserSignedIn === true && myListHeaderJSX}
+      {isUserSignedIn === true && myListHeaderJSX}
 
-      {context.isUserSignedIn === true &&
-        watchListHasError === true &&
-        myListErrorJSX}
+      {isUserSignedIn === true && watchListHasError === true && myListErrorJSX}
 
-      {context.isUserSignedIn === true &&
+      {isUserSignedIn === true &&
         status === "completed" &&
         watchList &&
         watchList.length > 0 &&
