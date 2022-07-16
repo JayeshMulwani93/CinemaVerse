@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "22f8869f8c6c3026164c",
+    "revision": "a3fefdf11f56925e4d3d",
     "url": "/CinemaVerse/static/css/main.efa721c0.chunk.css"
   },
   {
-    "revision": "22f8869f8c6c3026164c",
-    "url": "/CinemaVerse/static/js/main.22f8869f.chunk.js"
+    "revision": "a3fefdf11f56925e4d3d",
+    "url": "/CinemaVerse/static/js/main.a3fefdf1.chunk.js"
   },
   {
     "revision": "7cc60ea65e23f6786fd4",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/CinemaVerse/static/js/runtime~main.61d5bcc0.js"
   },
   {
-    "revision": "9782bb3019c5fa8f3fff35ce937c934d",
+    "revision": "6fad6869a0860d781957bacb0abc0a95",
     "url": "/CinemaVerse/index.html"
   }
 ];

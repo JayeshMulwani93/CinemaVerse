@@ -1,7 +1,7 @@
 {
   "main.css": "/CinemaVerse/static/css/main.efa721c0.chunk.css",
-  "main.js": "/CinemaVerse/static/js/main.22f8869f.chunk.js",
-  "main.js.map": "/CinemaVerse/static/js/main.22f8869f.chunk.js.map",
+  "main.js": "/CinemaVerse/static/js/main.a3fefdf1.chunk.js",
+  "main.js.map": "/CinemaVerse/static/js/main.a3fefdf1.chunk.js.map",
   "static/css/1.bb92660e.chunk.css": "/CinemaVerse/static/css/1.bb92660e.chunk.css",
   "static/js/1.7cc60ea6.chunk.js": "/CinemaVerse/static/js/1.7cc60ea6.chunk.js",
   "static/js/1.7cc60ea6.chunk.js.map": "/CinemaVerse/static/js/1.7cc60ea6.chunk.js.map",
@@ -10,6 +10,6 @@
   "static/css/main.efa721c0.chunk.css.map": "/CinemaVerse/static/css/main.efa721c0.chunk.css.map",
   "static/css/1.bb92660e.chunk.css.map": "/CinemaVerse/static/css/1.bb92660e.chunk.css.map",
   "index.html": "/CinemaVerse/index.html",
-  "precache-manifest.c9d61fd3a241882b3ba9913b9251a711.js": "/CinemaVerse/precache-manifest.c9d61fd3a241882b3ba9913b9251a711.js",
+  "precache-manifest.8b6d2bb586aebce64373fcaa2b37bc6f.js": "/CinemaVerse/precache-manifest.8b6d2bb586aebce64373fcaa2b37bc6f.js",
   "service-worker.js": "/CinemaVerse/service-worker.js"
 }
