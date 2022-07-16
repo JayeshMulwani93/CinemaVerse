@@ -12,7 +12,8 @@ export async function addToWatchListApi(requestData) {
   if (filteredWatchList && filteredWatchList.length > 0) {
     console.log("Already exists in favorites");
   } else {
-    const updatedWatchList = [...currentWatchList, movie];
+    const updatedWatchList = [...currentWatchList];
+    updatedWatchList.unshift(movie);
     return saveWatchList(userId, updatedWatchList);
   }
 
