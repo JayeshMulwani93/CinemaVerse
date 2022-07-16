@@ -27,5 +27,6 @@ OMDB Api
 
 This project was bootstapped with Create React App.
 
-To collaborate, you will need to install this locally, you will need to setup firebase & Omdb Api keys.
-These keys are added as part of placeholder.env file, You can update the keys and then rename it to .env
+### To collaborate
+While installing locally, you need to setup firebase & Omdb Api keys.
+These keys are added as part of placeholder.env file, You can update the keys and then rename it to ".env".
