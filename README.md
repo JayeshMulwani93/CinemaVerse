@@ -27,14 +27,5 @@ OMDB Api
 
 This project was bootstapped with Create React App.
 
-To install this locally, you will need to setup firebase & Omdb Api keys.
-Also, you will need to setup an .env file which will contain the below variables.
-
-REACT_APP_OMDB_SECRET_KEY,
-REACT_APP_FIREBASE_API_KEY,
-REACT_APP_FIREBASE_AUTH_DOMAIN,
-REACT_APP_FIREBASE_DATABASE_URL,
-REACT_APP_FIREBASE_PROJECT_ID,
-REACT_APP_FIREBASE_STORAGE_BUCKET, 
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-REACT_APP_FIREBASE_APP_ID
+To collaborate, you will need to install this locally, you will need to setup firebase & Omdb Api keys.
+These keys are added as part of placeholder.env file, You can update the keys and then rename it to .env
