@@ -5,7 +5,7 @@ import RemoveFromWatchList from "../RemoveFromWatchList/RemoveFromWatchList";
 const MovieFooter = (props) => {
   let footerComponentJSX;
 
-  if (props.isMoviePartOfWatchList === true) {
+  if (props.isMoviePartOfWatchList) {
     footerComponentJSX = <RemoveFromWatchList />;
   } else {
     footerComponentJSX = <AddToWatchList />;
